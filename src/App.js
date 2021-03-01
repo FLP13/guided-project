@@ -1,24 +1,40 @@
-import logo from './logo.svg';
-import './App.css';
+import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
+import styled from 'styled-components';
+
+// Components
+import Header from './components/header/header';
+
+const ContentArea = styled.div`
+  padding: 8px;
+  display: flex;
+  justify-content: center;
+  max-width: ${props => props.theme.maxWidth};
+`
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <>
+      <Router>
+        <Header />
+        <Switch>
+          <Route path="/deals" >
+            <ContentArea>
+              Deals
+            </ContentArea>
+          </Route>
+          <Route path="/cart" >
+            <ContentArea>
+              Cart
+            </ContentArea>
+          </Route>
+          <Route path="/" >
+            <ContentArea>
+              Home
+            </ContentArea>
+          </Route>
+        </Switch>
+      </Router>
+    </>
   );
 }
 
