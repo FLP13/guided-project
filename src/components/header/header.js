@@ -1,4 +1,5 @@
 import styled from 'styled-components';
+import { Link } from 'react-router-dom';
 
 // Components
 import Navbar from './navbar';
@@ -21,7 +22,10 @@ const Title = styled.h1`
     margin-bottom: auto;
     flex: 1;
     min-width: 300px;
-    color: ${props => props.theme.whiteSmoke};
+    a {
+        text-decoration: unset;
+        color: ${props => props.theme.whiteSmoke};
+    }
 `
 
 const NavbarWrapper = styled.div`
@@ -33,9 +37,11 @@ const Header = () => {
     return (
         <WrapperOuter>
             <WrapperInner>
-                <Title>
-                    SuperStore
-                </Title>
+                    <Title>
+                        <Link to="/">
+                            SuperStore
+                        </Link>
+                    </Title>
                 <NavbarWrapper>
                     <Navbar />
                 </NavbarWrapper>

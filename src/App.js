@@ -3,12 +3,14 @@ import styled from 'styled-components';
 
 // Components
 import Header from './components/header/header';
+import Home from './components/home/home';
+import Deals from './components/deals/deals';
+import Cart from './components/cart/cart';
 
 const ContentArea = styled.div`
   padding: 8px;
   display: flex;
   justify-content: center;
-  max-width: ${props => props.theme.maxWidth};
 `
 
 function App() {
@@ -19,17 +21,17 @@ function App() {
         <Switch>
           <Route path="/deals" >
             <ContentArea>
-              Deals
+              <Deals />
             </ContentArea>
           </Route>
           <Route path="/cart" >
             <ContentArea>
-              Cart
+              <Cart />
             </ContentArea>
           </Route>
           <Route path="/" >
             <ContentArea>
-              Home
+              <Home />
             </ContentArea>
           </Route>
         </Switch>
