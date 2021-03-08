@@ -1,5 +1,7 @@
 import Item from '../models/item';
 
+// DEPRECATED, USING useFetch hook now instead, is this better or worse or own preference?
+
 const SUPERSTORE_ENDPOINT = 'https://gp-super-store-api.herokuapp.com';
 
 const getItemListFromBackend = async() => {
