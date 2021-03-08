@@ -5,9 +5,14 @@ import styled from 'styled-components';
 import Item from './item';
 
 const Wrapper = styled.div`
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
+    display: grid;
+    grid-template-columns: 33% 33% 33%;
+    @media (max-width:${props => props.theme.mediumScreen}) {
+        grid-template-columns: 50% 50%;
+    }
+    @media (max-width: ${props => props.theme.smallScreen}) {
+        grid-template-columns: 100%;
+    }
 `;
 
 
