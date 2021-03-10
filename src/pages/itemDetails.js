@@ -3,37 +3,23 @@ import { useRouteMatch } from 'react-router-dom';
 import PropTypes from 'prop-types';
 import styled from 'styled-components';
 
-import { useFetchItem } from '../hooks/useFetch';
+import { useFetch } from '../services/ItemService';
 
 const Wrapper = styled.div`
     max-width: ${props => props.theme.maxWidth};
 `;
 
-const ItemDetails = ({ selectedItem }) => {
+const ItemDetails = () => {
 
     const id = useRouteMatch().params.id;
 
-    // To only fetch when needed
-    const {status, error, item} = selectedItem ? { status: 'fetched', error: null, item: selectedItem} : useFetchItem(id);
+    const {data, status} = useFetch({type:'ITEM_DETAILS', id: id});
 
     return (
         <Wrapper>
-            {
-                status === 'fetched' && <>
-                    <p>{item.name}</p>
-                    <p>{item.id}</p>
-                </>
-            }
-            {
-                status === 'fetching' && <>
-                    <p>LOADING ITEM...</p>
-                </>
-            }
-            {
-                error && <>
-                    <p>ERROR FETCHING ITEM</p>
-                </>
-            }
+            { status === 'DONE'    && <><p>{data.name}</p><p>{data.id}</p></>}
+            { status === 'LOADING' && <p>LOADING...</p>}
+            { status === 'ERROR'   && <p>ERROR</p>}
         </Wrapper>
     );
 };

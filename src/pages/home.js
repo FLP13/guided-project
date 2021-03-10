@@ -2,16 +2,21 @@ import { React } from 'react';
 import PropTypes from 'prop-types';
 import styled from 'styled-components';
 
+import { useFetch } from '../services/ItemService';
+
 import ItemList from '../components/items/itemList';
 
 const Wrapper = styled.div`
     max-width: ${props => props.theme.maxWidth};
 `;
 
-const Home = ({ items, setSelectedItem }) => {
+const Home = () => {
+
+    const {data, status} = useFetch({type:'ITEM_LIST'});
+
     return (
         <Wrapper>
-            <ItemList items={items} setSelectedItem={setSelectedItem} />
+            <ItemList items={data.items} status={status} />
         </Wrapper>
     );
 };

@@ -57,7 +57,7 @@ const ButtonWrapper = styled.div`
     }
 `;
 
-const Item = ({ item, setSelectedItem }) => {
+const Item = ({ item }) => {
     return (
         <Wrapper>
             <ImageWrapper>
@@ -73,7 +73,7 @@ const Item = ({ item, setSelectedItem }) => {
             </PriceWrapper>
             <ButtonWrapper>
                 <Link to={`/item/${item.id}`}>
-                    <Button onClick={() => { setSelectedItem(item); }} text={'View Item'} />
+                    <Button text={'View Item'} />
                 </Link>
             </ButtonWrapper>
         </Wrapper>

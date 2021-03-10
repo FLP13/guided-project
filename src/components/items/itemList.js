@@ -6,27 +6,29 @@ import Item from './item';
 
 const Wrapper = styled.div`
     display: grid;
-    grid-template-columns: 33% 33% 33%;
+    grid-template-columns: auto auto auto;
     @media (max-width:${props => props.theme.mediumScreen}) {
-        grid-template-columns: 50% 50%;
+        grid-template-columns: auto auto;
     }
     @media (max-width: ${props => props.theme.smallScreen}) {
-        grid-template-columns: 100%;
+        grid-template-columns: auto;
     }
 `;
 
 
-const ItemList = ({ items, setSelectedItem }) => {
+const ItemList = ({ items, status }) => {
     return (
         <Wrapper>
-            { items.map(item => <Item key={item.id} item={item} setSelectedItem={setSelectedItem} /> ) }
+            { status === 'DONE'    && items.map(item => <Item key={item.id} item={item} /> ) }
+            { status === 'LOADING' && <p>LOADING...</p> }
+            { status === 'ERROR'   && <p>ERROR</p> }
         </Wrapper>
     );
 };
 
 ItemList.propTypes = {
     items: PropTypes.array,
-    setSelectedItem: PropTypes.func
+    status: PropTypes.string
 };
 
 export default ItemList;

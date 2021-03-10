@@ -1,8 +1,6 @@
-import { React, useState } from 'react';
+import { React } from 'react';
 import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
 import styled from 'styled-components';
-
-import { useFetchItemList } from './hooks/useFetch';
 
 // Components
 import Header from './components/header/header';
@@ -19,39 +17,26 @@ const ContentArea = styled.div`
 
 function App() {
 
-    const [selectedItem, setSelectedItem] = useState(null);
-    
-    const {status, error, items} = useFetchItemList();
-
     return (
         <>
             <Router>
                 <Header />
                 <Switch>
                     <ContentArea>
-                        {
-                            status === 'fetched' && 
-                            <>
-                                <Route exact path="/" >
-                                    <Home items={items} setSelectedItem={setSelectedItem} />
-                                </Route>
-                                <Route path="/deals" >
-                                    <Deals items={items} setSelectedItem={setSelectedItem} />
-                                </Route>
-                                <Route path="/cart" >
-                                    <Cart />
-                                </Route>
-                                <Route path="/item/:id" >
-                                    <ItemDetails selectedItem={selectedItem} />
-                                </Route>
-                            </>
-                        }
-                        {
-                            status === 'fetching' && <p>LOADING ITEMS...</p>   
-                        }
-                        {
-                            error && <p>ERROR LOADING ITEMS!</p>   
-                        }
+                        <>
+                            <Route exact path="/" >
+                                <Home />
+                            </Route>
+                            <Route path="/deals" >
+                                <Deals />
+                            </Route>
+                            <Route path="/cart" >
+                                <Cart />
+                            </Route>
+                            <Route path="/item/:id" >
+                                <ItemDetails />
+                            </Route>
+                        </>
                     </ContentArea>
                 </Switch>
             </Router>
