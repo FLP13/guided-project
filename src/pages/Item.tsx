@@ -1,10 +1,9 @@
 import React from 'react';
 import { useRouteMatch } from 'react-router-dom';
 import styled from 'styled-components';
-
 import { useFetchItemDetails } from '../hooks/useFetch';
 
-
+import { ItemDetails } from '../components/itemdetails/ItemDetails';
 
 interface MatchParams {
     id: string;
@@ -18,7 +17,7 @@ export const Item: React.FC = () => {
 
     return (
         <Wrapper>
-            { data    && <><p>{data.name}</p><p>{data.id}</p></>}
+            { data    && <ItemDetails item={data} />}
             { loading && 'LOADING' && <p>LOADING...</p>}
             { error   && <p>ERROR</p>}
         </Wrapper>

@@ -4,24 +4,29 @@ import styled from 'styled-components';
 
 type Props = {
     onClick?: () => void,
-    text: string
+    text: string,
+    disabled?: boolean
 }
 
-export const Button: React.FC<Props> = ({onClick, text}) => {
+export const Button: React.FC<Props> = ({onClick, text, disabled}) => {
     return (
-        <StyledButton onClick={onClick}>
+        <StyledButton disabled={disabled} onClick={() => { if (!disabled && onClick) onClick(); }}>
             <span>{text}</span>
         </StyledButton>
     );
 };
 
-const StyledButton =styled.button`
+type StyledProps = {
+    disabled?: boolean
+}
+
+const StyledButton = styled.button<StyledProps>`
     padding: 8px 15px;
     width: 150px;
-    background: orange;
+    background: ${props => props.disabled ? 'lightgray' : 'orange'};
     color: white;
-    border: 1px solid orange;
+    border: 1px solid ${props => props.disabled ? 'lightgray' : 'orange'};
     border-radius: 4px;
     font-size: 16px;
-    cursor: pointer;
+    cursor: ${props => props.disabled ? 'unset' : 'pointer'};;
 `;

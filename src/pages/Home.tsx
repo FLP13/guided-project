@@ -1,7 +1,7 @@
 import React from 'react';
 import styled from 'styled-components';
 import { useFetchItemList } from '../hooks/useFetch';
-import { ItemList } from '../components/items/ItemList';
+import { ItemList } from '../components/itemlist/ItemList';
 
 
 export const Home: React.FC = () => {

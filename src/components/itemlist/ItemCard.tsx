@@ -2,17 +2,18 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import styled from 'styled-components';
 
-import { Item as ItemType } from '../../services/ItemService';
+import { Item } from '../../services/ItemService';
 
+import { Price } from '../price/Price';
 import { Ratings } from '../ratings/Ratings';
 import { Button } from '../button/Button';
 
 
 type Props = {
-    item: ItemType
+    item: Item
 }
 
-export const Item: React.FC<Props> = ({ item }) => {
+export const ItemCard: React.FC<Props> = ({ item }) => {
     return (
         <Wrapper>
             <ImageWrapper>
@@ -22,10 +23,7 @@ export const Item: React.FC<Props> = ({ item }) => {
             </ImageWrapper>
             <Title>{ item.name }</Title>
             <Ratings rating={item.avgRating} />
-            <PriceWrapper>
-                <Price>${ item.price }</Price>
-                {item.isOnSale && <OnSale>On Sale</OnSale>}
-            </PriceWrapper>
+            <Price price={item.price} isOnSale={item.isOnSale} />
             <ButtonWrapper>
                 <Link to={`/item/${item.id}`}>
                     <Button text={'View Item'} />
@@ -61,21 +59,6 @@ const Title = styled.h2`
     font-size: 22px;
     white-space: nowrap;
     margin: 13px 0 5px;
-`;
-const PriceWrapper = styled.div`
-    display: flex;
-`;
-const Price = styled.strong`
-    font-size: 20px;
-    margin: 0 13px 13px 0;
-`;
-const OnSale = styled.strong`
-    background: red;
-    color: white;
-    padding: 0 6px 2px;
-    margin-top: 4px;
-    font-size: 16px;
-    height: 20px;
 `;
 
 const ButtonWrapper = styled.div`

@@ -3,7 +3,7 @@ import styled from 'styled-components';
 
 import { Item as ItemType } from '../../services/ItemService';
 
-import { Item } from './Item';
+import { ItemCard } from './ItemCard';
 
 type Props = {
     items: ItemType[]
@@ -12,7 +12,7 @@ type Props = {
 export const ItemList: React.FC<Props> = ({ items }) => {
     return (
         <Wrapper>
-            { items.map(item => <Item key={item.id} item={item} /> ) }
+            { items.map(item => <ItemCard key={item.id} item={item} /> ) }
         </Wrapper>
     );
 };
