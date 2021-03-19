@@ -1,9 +1,26 @@
-import { React } from 'react';
-import styled from 'styled-components';
+import React from 'react';
 import { Link } from 'react-router-dom';
+import styled from 'styled-components';
 
 // Components
-import Navbar from './navbar';
+import { Navbar } from './Navbar';
+
+export const Header: React.FC = () => {
+    return (
+        <WrapperOuter>
+            <WrapperInner>
+                <Title>
+                    <Link to="/">
+                        SuperStore
+                    </Link>
+                </Title>
+                <NavbarWrapper>
+                    <Navbar />
+                </NavbarWrapper>
+            </WrapperInner>
+        </WrapperOuter>
+    );
+};
 
 const WrapperOuter = styled.div`
     background: ${props => props.theme.denim};
@@ -33,22 +50,3 @@ const NavbarWrapper = styled.div`
     margin-top: auto;
     margin-bottom: auto;
 `;
-
-const Header = () => {
-    return (
-        <WrapperOuter>
-            <WrapperInner>
-                <Title>
-                    <Link to="/">
-                        SuperStore
-                    </Link>
-                </Title>
-                <NavbarWrapper>
-                    <Navbar />
-                </NavbarWrapper>
-            </WrapperInner>
-        </WrapperOuter>
-    );
-};
-
-export default Header;

@@ -1,22 +1,15 @@
-import { React } from 'react';
+import React from 'react';
 import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
 import styled from 'styled-components';
 
 // Components
-import Header from './components/header/header';
-import Home from './pages/home';
-import Deals from './pages/deals';
-import Cart from './pages/cart';
-import ItemDetails from './pages/itemDetails';
+import { Header } from './components/header/Header';
+import { Home } from './pages/Home';
+import { Deals } from './pages/Deals';
+import { Cart } from './pages/Cart';
+import { Item } from './pages/Item';
 
-const ContentArea = styled.div`
-  padding: 8px;
-  display: flex;
-  justify-content: center;
-`;
-
-function App() {
-
+export const App: React.FC = () => {
     return (
         <>
             <Router>
@@ -32,9 +25,9 @@ function App() {
                             </Route>
                             <Route path="/cart" >
                                 <Cart />
-                            </Route>
+                            </Route> 
                             <Route path="/item/:id" >
-                                <ItemDetails />
+                                <Item />
                             </Route>
                         </>
                     </ContentArea>
@@ -42,6 +35,10 @@ function App() {
             </Router>
         </>
     );
-}
+};
 
-export default App;
+const ContentArea = styled.div`
+  padding: 8px;
+  display: flex;
+  justify-content: center;
+`;

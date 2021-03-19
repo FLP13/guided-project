@@ -1,12 +1,14 @@
-import { React } from 'react';
-import PropTypes from 'prop-types';
-// import styled from 'styled-components';
+import React from 'react';
 
-import { ReactComponent as FullStar} from '../../svg/star_full.svg';
-import { ReactComponent as HalfStar} from '../../svg/star_half.svg';
-import { ReactComponent as EmptyStar} from '../../svg/star_empty.svg';
+import FullStar from './star_full.svg';
+import HalfStar from '../../svg/star_half.svg';
+import EmptyStar from '../../svg/star_empty.svg';
 
-const Ratings = ({rating}) => {
+type Props = {
+    rating: number
+}
+
+export const Ratings: React.FC<Props> = ({rating}) => {
 
     return (
         <div>
@@ -24,9 +26,3 @@ const Ratings = ({rating}) => {
         </div>
     );
 };
-
-Ratings.propTypes = {
-    rating: PropTypes.number
-};
-
-export default Ratings;
